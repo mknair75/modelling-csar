@@ -1,0 +1,107 @@
+TOSCA-Meta-Version: 1.0
+CSAR-Version: 1.0
+Created-By: Winery 0.1.37-SNAPSHOT
+Entry-Definitions: xml/Definitions/openovnf__vOpenNAT.tosca
+
+Name: xml/Definitions/openovnf__vOpenNAT.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.Scalable.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.nfv.Metric.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.network.Bindable.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.Attachment.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.nfv.VirtualBindable.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.requirements.nfv.VirtualStorage.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.nodes.nfv.VDU.VirtualStorage.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.relationships.nfv.VirtualBindsTo.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.nodes.nfv.VDU.Compute.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.artifacts.nfv.SwImage.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.nfv.VirtualCompute.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.Container.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.nfv.VirtualStorage.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.requirements.nfv.VirtualBinding.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openovnf__tosca.nodes.nfv.VNF.vOpenNAT.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.Endpoint.Admin.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.OperatingSystem.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.nodes.nfv.VduCpd.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.relationships.nfv.VDU.AttachedTo.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.requirements.nfv.VirtualLink.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openovnf__tosca.nodes.nfv.VNF.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.nfv.VirtualLinkable.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv/tosca.nodes.nfv.VDU.VirtualStorage/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: capabilitytypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv/tosca.capabilities.Container/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: nodetypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv/tosca.nodes.nfv.VDU.Compute/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: nodetypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv%2Fvnf/tosca.nodes.nfv.VNF.vOpenNAT/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: artifacttypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv/tosca.artifacts.nfv.SwImage/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: capabilitytypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv/tosca.capabilities.Scalable/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: capabilitytypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv/tosca.capabilities.OperatingSystem/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: nodetypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv%2Fvnf/tosca.nodes.nfv.VNF/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: relationshiptypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv/tosca.relationships.nfv.VDU.AttachedTo/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: capabilitytypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv/tosca.capabilities.nfv.VirtualCompute/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: nodetypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv/tosca.nodes.nfv.VduCpd/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+

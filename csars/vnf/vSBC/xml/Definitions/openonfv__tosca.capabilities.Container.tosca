@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-tosca.capabilities.Container" targetNamespace="http://www.open-o.org/tosca/nfv">
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" location="../capabilitytypes/http%253A%252F%252Fwww.open-o.org%252Ftosca%252Fnfv/tosca.capabilities.Container/propertiesdefinition/Properties.xsd" importType="http://www.w3.org/2001/XMLSchema" winery:wpd="true"/>
+    <tosca:CapabilityType name="tosca.capabilities.Container" targetNamespace="http://www.open-o.org/tosca/nfv">
+        <winery:PropertiesDefinition elementname="Properties" namespace="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery">
+            <winery:properties>
+                <winery:key>num_cpus</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>cpu_frequency</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>disk_size</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>mem_size</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+        </winery:PropertiesDefinition>
+        <tosca:PropertiesDefinition xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" type="ns1:Properties"/>
+    </tosca:CapabilityType>
+</tosca:Definitions>

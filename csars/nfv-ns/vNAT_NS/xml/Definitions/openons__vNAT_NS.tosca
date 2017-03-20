@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_openons-vNAT_NS" targetNamespace="http://www.open-o.org/tosca/nfv/ns">
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.relationships.nfv.VirtualLinksTo.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.nodes.nfv.VnfVirtualLinkDesc.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.capabilities.nfv.Metric.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.requirements.nfv.VirtualBinding.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.requirements.nfv.VirtualLink.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv/vnf" location="openovnf__tosca.nodes.nfv.VNF.vOpenNAT.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.capabilities.nfv.VirtualLinkable.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv/ns" location="openons__tosca.nodes.nfv.NS.vNAT_NS.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:ServiceTemplate xmlns:openons="http://www.open-o.org/tosca/nfv/ns" id="vNAT_NS" name="vNAT_NS" targetNamespace="http://www.open-o.org/tosca/nfv/ns" substitutableNodeType="openons:tosca.nodes.nfv.NS.vNAT_NS" template_source="derived">
+        <tosca:documentation/>
+        <tosca:BoundaryDefinitions>
+            <tosca:Properties>
+                <BoundaryPropertyDefinition>
+                    <Inputs/>
+                    <MetaDatas>
+                        <MetaData key="id" value="" tag="10" required="false"/>
+                        <MetaData key="vendor" value="" tag="10" required="false"/>
+                        <MetaData key="version" value="" tag="10" required="false"/>
+                        <MetaData key="name" value="" tag="10" required="false"/>
+                        <MetaData key="csarType" value="NSAR"/>
+                        <MetaData key="csarVersion" value="v1.0"/>
+                        <MetaData key="csarProvider" value="ZTE"/>
+                    </MetaDatas>
+                </BoundaryPropertyDefinition>
+            </tosca:Properties>
+            <tosca:Requirements/>
+            <tosca:Capabilities/>
+        </tosca:BoundaryDefinitions>
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate xmlns:openovnf="http://www.open-o.org/tosca/nfv/vnf" name="vOpenNAT" id="tosca_nodes_nfv_VNF_vOpenNAT" type="openovnf:tosca.nodes.nfv.VNF.vOpenNAT" winery:x="155" winery:y="75">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns3:Properties xmlns:ns3="http://www.open-o.org/tosca/nfv/vnf/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/vnf/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv/vnf">
+                        <id>openNAT-1.0</id>
+                        <vendor>intel</vendor>
+                        <version>1.0.0</version>
+                        <vnfProvider>intel</vnfProvider>
+                        <vnfProductName>openNAT</vnfProductName>
+                        <vnfSoftwareVersion>1.0.0</vnfSoftwareVersion>
+                        <vnfdVersion>1.0.0</vnfdVersion>
+                        <vnfProductInfoName>openNAT</vnfProductInfoName>
+                        <vnfProductInfoDescription>openNAT</vnfProductInfoDescription>
+                        <localizationLanguage>[english, chinese]</localizationLanguage>
+                        <defaultLocalizationLanguage>english</defaultLocalizationLanguage>
+                        <vnfdId>openNAT-1.0</vnfdId>
+                        <vnfmInfo>GVNFM</vnfmInfo>
+                        <csarType>NFAR</csarType>
+                        <csarVersion>1.0.0</csarVersion>
+                        <csarProvider>intel</csarProvider>
+			</ns3:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="sriov_plane" id="6abf8f96-03e4-4d4c-b3a6-18c5e1c6587e1" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                    <tosca:Requirement xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="sriov_plane" id="2fb48b9d-9048-404e-a564-043e59fdebb91" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                    <tosca:Requirement xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="virtualLink" id="a2279fb5-84df-4dca-9d12-63a3c36c4aac1" type="openonfv:tosca.requirements.nfv.VirtualLink" node="" capability=""/>
+                </tosca:Requirements>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="test" id="tosca_nodes_nfv_VnfVirtualLinkDesc" type="openonfv:tosca.nodes.nfv.VnfVirtualLinkDesc" winery:x="257" winery:y="340">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <connectivity_type>{"layer_protocol":"ipv4","flow_pattern":"mesh"}</connectivity_type>
+                        <description>sriov_link</description>
+                        <test_access>["test"]</test_access>
+                        <vl_flavours>{"networkType":"vlan","physicalNetwork":"sriov-test","segmentationId":"1"}</vl_flavours>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Capabilities>
+                    <tosca:Capability name="monitoring_parameters" id="71f8e140-ee6e-4278-95df-ddc2942a3f821" type="openonfv:tosca.capabilities.nfv.Metric" node="" capability=""/>
+                    <tosca:Capability name="virtual_linkable" id="140ec6b8-494d-4fed-82ac-cadb053e8acd1" type="openonfv:tosca.capabilities.nfv.VirtualLinkable" node="" capability=""/>
+                </tosca:Capabilities>
+            </tosca:NodeTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_25" id="con_25" type="openonfv:tosca.relationships.nfv.VirtualLinksTo">
+                <tosca:SourceElement ref="6abf8f96-03e4-4d4c-b3a6-18c5e1c6587e1"/>
+                <tosca:TargetElement ref="140ec6b8-494d-4fed-82ac-cadb053e8acd1"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

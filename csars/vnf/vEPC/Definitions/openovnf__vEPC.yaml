@@ -1,0 +1,366 @@
+imports: 
+- openonfv__tosca.capabilities.Scalable.yaml
+- openonfv__tosca.capabilities.nfv.Metric.yaml
+- openonfv__tosca.nodes.nfv.VnfVirtualLinkDesc.yaml
+- openonfv__tosca.capabilities.network.Bindable.yaml
+- openonfv__tosca.capabilities.Attachment.yaml
+- openonfv__tosca.capabilities.nfv.VirtualBindable.yaml
+- openonfv__tosca.capabilities.nfv.VirtualLinkable.yaml
+- openonfv__tosca.requirements.nfv.VirtualStorage.yaml
+- openonfv__tosca.nodes.nfv.VDU.VirtualStorage.yaml
+- openonfv__tosca.relationships.nfv.VirtualBindsTo.yaml
+- openonfv__tosca.nodes.nfv.VDU.Compute.yaml
+- openonfv__tosca.relationships.nfv.VirtualLinksTo.yaml
+- openonfv__tosca.capabilities.nfv.VirtualCompute.yaml
+- openonfv__tosca.capabilities.Container.yaml
+- openonfv__tosca.capabilities.nfv.VirtualStorage.yaml
+- openonfv__tosca.requirements.nfv.VirtualBinding.yaml
+- openovnf__tosca.nodes.nfv.VNF.vEPC.yaml
+- openonfv__tosca.capabilities.Endpoint.Admin.yaml
+- openonfv__tosca.capabilities.OperatingSystem.yaml
+- openonfv__tosca.nodes.nfv.VduCpd.yaml
+- openonfv__tosca.relationships.nfv.VDU.AttachedTo.yaml
+metadata: 
+  vendor: Huawei
+  csarVersion: v1.0
+  csarProvider: Huawei
+  id: vCPE
+  version: v1.0
+  csarType: NFAR
+topology_template: 
+  node_templates: 
+    IPU2Base: 
+      attributes: 
+        tosca_name: IPU2Base
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: IPU
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Base
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    SDU2Fabric: 
+      attributes: 
+        tosca_name: SDU2Fabric
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: SDU
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Fabric
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    OMU2Base: 
+      attributes: 
+        tosca_name: OMU2Base
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: OMU
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Base
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    SDU: 
+      attributes: 
+        tosca_name: SDU
+      capabilities: 
+        virtual_compute: 
+          properties: 
+            virtual_memory: 
+              virtual_mem_size: 24G
+            requested_additional_capabilities: {}
+            virtual_cpu: 
+              num_virtual_cpu: 4
+      properties: 
+        configurable_properties: 
+          test: 
+            additional_vnfc_configurable_properties: 
+              aaa: 1
+        name: SDU
+        descrption: the virtual machine of SDU
+      requirements: 
+      - virtual_storage: 
+          capability: virtual_storage
+          node: SDU_Storage
+          relationship: 
+            type: tosca.relationships.nfv.VDU.AttachedTo
+      - local_storage: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VDU.Compute
+    OMU_Storage: 
+      attributes: 
+        tosca_name: OMU_Storage
+      properties: 
+        id: OMU_Storage
+        size_of_storage: 300G
+        rdma_enabled: false
+        type_of_storage: volume
+      type: tosca.nodes.nfv.VDU.VirtualStorage
+    SDU2Base: 
+      attributes: 
+        tosca_name: SDU2Base
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: SDU
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Base
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    SPU2Base: 
+      attributes: 
+        tosca_name: SPU2Base
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: SPU
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Base
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    Base: 
+      attributes: 
+        tosca_name: Base
+      properties: 
+        vl_flavours: 
+          flavours: test2
+        connectivity_type: 
+          layer_protocol: ipv4
+          flow_pattern: 
+      type: tosca.nodes.nfv.VnfVirtualLinkDesc
+    IPU2Fabric: 
+      attributes: 
+        tosca_name: IPU2Fabric
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: IPU
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Fabric
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    IPU: 
+      attributes: 
+        tosca_name: IPU
+      capabilities: 
+        virtual_compute: 
+          properties: 
+            virtual_memory: 
+              virtual_mem_size: 16G
+            requested_additional_capabilities: {}
+            virtual_cpu: 
+              num_virtual_cpu: 8
+      properties: 
+        configurable_properties: 
+          test: 
+            additional_vnfc_configurable_properties: 
+              aaa: 1
+        name: IPU
+        descrption: the virtual machine of IPU
+      requirements: 
+      - virtual_storage: 
+          capability: virtual_storage
+          node: IPU_Storage
+          relationship: 
+            type: tosca.relationships.nfv.VDU.AttachedTo
+      - local_storage: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VDU.Compute
+    IPU_Storage: 
+      attributes: 
+        tosca_name: IPU_Storage
+      properties: 
+        id: IPU_Storage
+        size_of_storage: 40G
+        type_of_storage: volume
+      type: tosca.nodes.nfv.VDU.VirtualStorage
+    OMU2Fabric: 
+      attributes: 
+        tosca_name: OMU2Fabric
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: OMU
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Fabric
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    OMU: 
+      attributes: 
+        tosca_name: OMU
+      capabilities: 
+        virtual_compute: 
+          properties: 
+            virtual_memory: 
+              virtual_mem_size: 16G
+            requested_additional_capabilities: {}
+            virtual_cpu: 
+              num_virtual_cpu: 8
+      properties: 
+        configurable_properties: 
+          test: 
+            additional_vnfc_configurable_properties: 
+              aaa: 1
+        name: OMU
+        descrption: the virtual machine of OMU
+      requirements: 
+      - virtual_storage: 
+          capability: virtual_storage
+          node: OMU_Storage
+          relationship: 
+            type: tosca.relationships.nfv.VDU.AttachedTo
+      - local_storage: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VDU.Compute
+    SPU: 
+      attributes: 
+        tosca_name: SPU
+      capabilities: 
+        virtual_compute: 
+          properties: 
+            virtual_memory: 
+              virtual_mem_size: 32G
+            requested_additional_capabilities: {}
+            virtual_cpu: 
+              num_virtual_cpu: 8
+      properties: 
+        configurable_properties: 
+          test: 
+            additional_vnfc_configurable_properties: 
+              aaa: 1
+        name: SPU
+        descrption: the virtual machine of SPU
+      requirements: 
+      - virtual_storage: 
+          capability: virtual_storage
+          node: SPU_Storage
+          relationship: 
+            type: tosca.relationships.nfv.VDU.AttachedTo
+      - local_storage: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VDU.Compute
+    SPU2Fabric: 
+      attributes: 
+        tosca_name: SPU2Fabric
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: SPU
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Fabric
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    SDU_Storage: 
+      attributes: 
+        tosca_name: SDU_Storage
+      properties: 
+        id: SDU_Storage
+        size_of_storage: 30G
+        type_of_storage: volume
+      type: tosca.nodes.nfv.VDU.VirtualStorage
+    Fabric: 
+      attributes: 
+        tosca_name: Fabric
+      properties: 
+        vl_flavours: 
+          flavours: test1
+        connectivity_type: 
+          layer_protocol: ipv4
+          flow_pattern: 
+      type: tosca.nodes.nfv.VnfVirtualLinkDesc
+    SPU_Storage: 
+      attributes: 
+        tosca_name: SPU_Storage
+      properties: 
+        id: SPU_Storage
+        size_of_storage: 40G
+        type_of_storage: volume
+      type: tosca.nodes.nfv.VDU.VirtualStorage
+    ToOM: 
+      attributes: 
+        tosca_name: ToOM
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          node: tosca.nodes.Root
+      - virtual_link: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VduCpd
+    ToExternal: 
+      attributes: 
+        tosca_name: ToExternal
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: IPU
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VduCpd
+  substitution_mappings: 
+    node_type: tosca.nodes.nfv.VNF.vEPC
+tosca_definitions_version: tosca_simple_yaml_1_0

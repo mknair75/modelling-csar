@@ -1,0 +1,14 @@
+capability_types: 
+  tosca.capabilities.Scalable: 
+    derived_from: tosca.capabilities.Root
+    properties: 
+      min_instances: 
+        required: false
+        type: integer
+      max_instances: 
+        required: false
+        type: integer
+      default_instances: 
+        required: false
+        type: integer
+tosca_definitions_version: tosca_simple_yaml_1_0

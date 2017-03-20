@@ -1,0 +1,348 @@
+imports: 
+- openonfv__tosca.capabilities.Scalable.yaml
+- openonfv__tosca.capabilities.nfv.Metric.yaml
+- openonfv__tosca.nodes.nfv.VnfVirtualLinkDesc.yaml
+- openonfv__tosca.capabilities.network.Bindable.yaml
+- openonfv__tosca.capabilities.Attachment.yaml
+- openonfv__tosca.capabilities.nfv.VirtualBindable.yaml
+- openonfv__tosca.capabilities.nfv.VirtualLinkable.yaml
+- openovnf__tosca.nodes.nfv.VNF.vMME.yaml
+- openonfv__tosca.requirements.nfv.VirtualStorage.yaml
+- openonfv__tosca.nodes.nfv.VDU.VirtualStorage.yaml
+- openonfv__tosca.relationships.nfv.VirtualBindsTo.yaml
+- openonfv__tosca.nodes.nfv.VDU.Compute.yaml
+- openonfv__tosca.relationships.nfv.VirtualLinksTo.yaml
+- openonfv__tosca.capabilities.nfv.VirtualCompute.yaml
+- openonfv__tosca.capabilities.Container.yaml
+- openonfv__tosca.capabilities.nfv.VirtualStorage.yaml
+- openonfv__tosca.requirements.nfv.VirtualBinding.yaml
+- openonfv__tosca.capabilities.Endpoint.Admin.yaml
+- openonfv__tosca.capabilities.OperatingSystem.yaml
+- openonfv__tosca.nodes.nfv.VduCpd.yaml
+- openonfv__tosca.relationships.nfv.VDU.AttachedTo.yaml
+metadata: 
+  vendor: ERICSSON
+  csarVersion: v1.0
+  csarProvider: ERICSSON
+  id: vMME
+  version: v1.0
+  csarType: NFAR
+topology_template: 
+  node_templates: 
+    FSB_Storage: 
+      attributes: 
+        tosca_name: FSB_Storage
+      properties: 
+        id: FSB_Storage
+        size_of_storage: 160G
+        rdma_enabled: false
+        type_of_storage: volume
+      type: tosca.nodes.nfv.VDU.VirtualStorage
+    ToManageNet: 
+      attributes: 
+        tosca_name: ToManageNet
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          node: tosca.nodes.Root
+      - virtual_link: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VduCpd
+    GPB2Intranet2: 
+      attributes: 
+        tosca_name: GPB2Intranet2
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: GPB
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Intranet2
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    GPB2Intranet1: 
+      attributes: 
+        tosca_name: GPB2Intranet1
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: GPB
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Intranet1
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    GPB_Storage: 
+      attributes: 
+        tosca_name: GPB_Storage
+      properties: 
+        id: GPB_Storage
+        size_of_storage: 1G
+        type_of_storage: volume
+      type: tosca.nodes.nfv.VDU.VirtualStorage
+    NCB: 
+      attributes: 
+        tosca_name: NCB
+      capabilities: 
+        virtual_compute: 
+          properties: 
+            virtual_memory: 
+              virtual_mem_size: 2G
+            requested_additional_capabilities: {}
+            virtual_cpu: 
+              num_virtual_cpu: 2
+      properties: 
+        configurable_properties: 
+          test: 
+            additional_vnfc_configurable_properties: 
+              aaa: 1
+        name: NCB
+        descrption: the virtual machine of NCB
+      requirements: 
+      - virtual_storage: 
+          capability: virtual_storage
+          node: NCB_Storage
+          relationship: 
+            type: tosca.relationships.nfv.VDU.AttachedTo
+      - local_storage: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VDU.Compute
+    vLC: 
+      attributes: 
+        tosca_name: vLC
+      capabilities: 
+        virtual_compute: 
+          properties: 
+            virtual_memory: 
+              virtual_mem_size: 5G
+            requested_additional_capabilities: {}
+            virtual_cpu: 
+              num_virtual_cpu: 4
+      properties: 
+        configurable_properties: 
+          test: 
+            additional_vnfc_configurable_properties: 
+              aaa: 1
+        name: vLC
+        descrption: the virtual machine of vLC
+      requirements: 
+      - virtual_storage: 
+          capability: virtual_storage
+          node: vLC_Storage
+          relationship: 
+            type: tosca.relationships.nfv.VDU.AttachedTo
+      - local_storage: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VDU.Compute
+    NCB_Storage: 
+      attributes: 
+        tosca_name: NCB_Storage
+      properties: 
+        id: NCB_Storage
+        size_of_storage: 1G
+        type_of_storage: volume
+      type: tosca.nodes.nfv.VDU.VirtualStorage
+    NCB2Intranet2: 
+      attributes: 
+        tosca_name: NCB2Intranet2
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: NCB
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Intranet2
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    NCB2Intranet1: 
+      attributes: 
+        tosca_name: NCB2Intranet1
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: NCB
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Intranet1
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    FSB2Intranet1: 
+      attributes: 
+        tosca_name: FSB2Intranet1
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: FSB
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Intranet2
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    vLC_Storage: 
+      attributes: 
+        tosca_name: vLC_Storage
+      properties: 
+        id: vLC_Storage
+        size_of_storage: 1G
+        type_of_storage: volume
+      type: tosca.nodes.nfv.VDU.VirtualStorage
+    vLC2Intranet2: 
+      attributes: 
+        tosca_name: vLC2Intranet2
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: vLC
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Intranet2
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    vLC2Intranet1: 
+      attributes: 
+        tosca_name: vLC2Intranet1
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: vLC
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          capability: virtual_linkable
+          node: Intranet1
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VduCpd
+    ToExtNet: 
+      attributes: 
+        tosca_name: ToExtNet
+      properties: 
+        role: root
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: vLC
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VduCpd
+    FSB: 
+      attributes: 
+        tosca_name: FSB
+      capabilities: 
+        virtual_compute: 
+          properties: 
+            virtual_memory: 
+              virtual_mem_size: 2G
+            requested_additional_capabilities: {}
+            virtual_cpu: 
+              num_virtual_cpu: 2
+      properties: 
+        configurable_properties: 
+          test: 
+            additional_vnfc_configurable_properties: 
+              aaa: 1
+        name: FSB
+        descrption: the virtual machine of FSB
+      requirements: 
+      - virtual_storage: 
+          capability: virtual_storage
+          node: FSB_Storage
+          relationship: 
+            type: tosca.relationships.nfv.VDU.AttachedTo
+      - local_storage: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VDU.Compute
+    Intranet1: 
+      attributes: 
+        tosca_name: Intranet1
+      properties: 
+        vl_flavours: 
+          flavours: test1
+        connectivity_type: 
+          layer_protocol: ipv4
+          flow_pattern: 
+      type: tosca.nodes.nfv.VnfVirtualLinkDesc
+    GPB: 
+      attributes: 
+        tosca_name: GPB
+      capabilities: 
+        virtual_compute: 
+          properties: 
+            virtual_memory: 
+              virtual_mem_size: 4G
+            requested_additional_capabilities: {}
+            virtual_cpu: 
+              num_virtual_cpu: 4
+      properties: 
+        configurable_properties: 
+          test: 
+            additional_vnfc_configurable_properties: 
+              aaa: 1
+        name: GPB
+        descrption: the virtual machine of GPB
+      requirements: 
+      - virtual_storage: 
+          capability: virtual_storage
+          node: GPB_Storage
+          relationship: 
+            type: tosca.relationships.nfv.VDU.AttachedTo
+      - local_storage: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VDU.Compute
+    Intranet2: 
+      attributes: 
+        tosca_name: Intranet2
+      properties: 
+        vl_flavours: 
+          flavours: test2
+        connectivity_type: 
+          layer_protocol: ipv4
+          flow_pattern: 
+      type: tosca.nodes.nfv.VnfVirtualLinkDesc
+  substitution_mappings: 
+    node_type: tosca.nodes.nfv.VNF.vMME
+tosca_definitions_version: tosca_simple_yaml_1_0

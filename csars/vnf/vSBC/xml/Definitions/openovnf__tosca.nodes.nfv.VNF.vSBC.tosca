@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_openovnf-tosca.nodes.nfv.VNF.vSBC" targetNamespace="http://www.open-o.org/tosca/nfv/vnf">
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.requirements.nfv.VirtualLink.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv/vnf" location="openovnf__tosca.nodes.nfv.VNF.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv/vnf/propertiesdefinition/winery" location="../nodetypes/http%253A%252F%252Fwww.open-o.org%252Ftosca%252Fnfv%252Fvnf/tosca.nodes.nfv.VNF.vSBC/propertiesdefinition/Properties.xsd" importType="http://www.w3.org/2001/XMLSchema" winery:wpd="true"/>
+    <tosca:NodeType name="tosca.nodes.nfv.VNF.vSBC" targetNamespace="http://www.open-o.org/tosca/nfv/vnf">
+        <winery:PropertiesDefinition elementname="Properties" namespace="http://www.open-o.org/tosca/nfv/vnf/propertiesdefinition/winery">
+            <winery:properties>
+                <winery:key>id</winery:key>
+                <winery:required>false</winery:required>
+                <winery:tag>10</winery:tag>
+                <winery:type>xsd:string</winery:type>
+                <winery:value>vSBC_vP-CSCF</winery:value>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>vendor</winery:key>
+                <winery:required>false</winery:required>
+                <winery:tag>10</winery:tag>
+                <winery:type>xsd:string</winery:type>
+                <winery:value>Huawei</winery:value>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>version</winery:key>
+                <winery:required>false</winery:required>
+                <winery:tag>10</winery:tag>
+                <winery:type>xsd:string</winery:type>
+                <winery:value>v1.0</winery:value>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>csarType</winery:key>
+                <winery:type>xsd:string</winery:type>
+                <winery:value>NFAR</winery:value>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>csarVersion</winery:key>
+                <winery:type>xsd:string</winery:type>
+                <winery:value>v1.0</winery:value>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>csarProvider</winery:key>
+                <winery:type>xsd:string</winery:type>
+                <winery:value>Huawei</winery:value>
+            </winery:properties>
+        </winery:PropertiesDefinition>
+        <tosca:DerivedFrom xmlns:openovnf="http://www.open-o.org/tosca/nfv/vnf" typeRef="openovnf:tosca.nodes.nfv.VNF"/>
+        <tosca:PropertiesDefinition xmlns:ns3="http://www.open-o.org/tosca/nfv/vnf/propertiesdefinition/winery" type="ns3:Properties"/>
+        <tosca:RequirementDefinitions>
+            <tosca:RequirementDefinition xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="virtualLink" requirementType="openonfv:tosca.requirements.nfv.VirtualLink" lowerBound="0" upperBound="unbounded"/>
+        </tosca:RequirementDefinitions>
+    </tosca:NodeType>
+</tosca:Definitions>

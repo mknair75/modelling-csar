@@ -1,0 +1,98 @@
+data_types: 
+  tosca.datatypes.nfv.L3AddressData: 
+    properties: 
+      number_of_ip_address: 
+        required: false
+        type: integer
+      ip_address_assignment: 
+        type: boolean
+      ip_address_type: 
+        constraints: 
+        - valid_values: 
+          - ipv4
+          - ipv6
+        required: false
+        type: string
+      floating_ip_activated: 
+        type: string
+  tosca.datatypes.nfv.VirtualNetworkInterfaceRequirements: 
+    properties: 
+      name: 
+        required: false
+        type: string
+      support_mandatory: 
+        type: boolean
+      description: 
+        required: false
+        type: string
+      requirement: 
+        entry_schema: 
+          type: string
+        type: map
+  tosca.datatype.nfv.AddressData: 
+    properties: 
+      address_type: 
+        constraints: 
+        - valid_values: 
+          - mac_address
+          - ip_address
+        type: string
+      l2_address_data: 
+        required: false
+        type: tosca.datatypes.nfv.L2AddressData
+      l3_address_data: 
+        required: false
+        type: tosca.datatypes.nfv.L3AddressData
+  tosca.datatypes.nfv.L2AddressData: {}
+imports: 
+- openonfv__tosca.requirements.nfv.VirtualBinding.yaml
+- openonfv__tosca.requirements.nfv.VirtualBinding.yaml
+node_types: 
+  tosca.nodes.nfv.VduCpd: 
+    derived_from: tosca.nodes.Root
+    properties: 
+      virtual_network_interface_requirements: 
+        entry_schema: 
+          type: tosca.datatypes.nfv.VirtualNetworkInterfaceRequirements
+        required: false
+        type: list
+      role: 
+        constraints: 
+        - valid_values: 
+          - root
+          - leaf
+        required: false
+        type: string
+      bitrate_requirement: 
+        required: false
+        type: integer
+      description: 
+        required: false
+        type: string
+      layer_protocol: 
+        constraints: 
+        - valid_values: 
+          - ethernet
+          - mpls
+          - odu2
+          - ipv4
+          - ipv6
+          - pseudo_wire
+        type: string
+      address_data: 
+        entry_schema: 
+          type: tosca.datatype.nfv.AddressData
+        required: false
+        type: list
+    requirements: 
+    - virtual_binding: 
+        capability: tosca.capabilities.nfv.VirtualBindable
+        occurrences: 
+        - 0
+        - UNBOUNDED
+    - virtual_link: 
+        capability: tosca.capabilities.nfv.VirtualBindable
+        occurrences: 
+        - 0
+        - UNBOUNDED
+tosca_definitions_version: tosca_simple_yaml_1_0

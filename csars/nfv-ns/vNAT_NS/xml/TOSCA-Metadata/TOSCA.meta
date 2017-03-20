@@ -1,0 +1,65 @@
+TOSCA-Meta-Version: 1.0
+CSAR-Version: 1.0
+Created-By: Winery 0.1.37-SNAPSHOT
+Entry-Definitions: xml/Definitions/openons__vNAT_NS.tosca
+
+Name: xml/Definitions/openons__vNAT_NS.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.relationships.nfv.VirtualLinksTo.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.nodes.nfv.VnfVirtualLinkDesc.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.nfv.Metric.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.requirements.nfv.VirtualBinding.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.requirements.nfv.VirtualLink.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openovnf__tosca.nodes.nfv.VNF.vOpenNAT.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.nfv.VirtualLinkable.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openons__tosca.nodes.nfv.NS.vNAT_NS.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openonfv__tosca.capabilities.nfv.VirtualBindable.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openovnf__tosca.nodes.nfv.VNF.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: xml/Definitions/openons__tosca.nodes.nfv.NS.tosca
+Content-Type: application/vnd.oasis.tosca.definitions
+
+Name: nodetypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv%2Fvnf/tosca.nodes.nfv.VNF/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: nodetypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv%2Fvnf/tosca.nodes.nfv.VNF.vOpenNAT/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: nodetypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv%2Fns/tosca.nodes.nfv.NS/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv%2Fns/tosca.nodes.nfv.NS/appearance/smallIcon.png
+Content-Type: image/png
+
+Name: nodetypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv%2Fns/tosca.nodes.nfv.NS.vNAT_NS/appearance/bigIcon.png
+Content-Type: image/png
+
+Name: nodetypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv/tosca.nodes.nfv.VnfVirtualLinkDesc/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: nodetypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv%2Fns/tosca.nodes.nfv.NS.vNAT_NS/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+
+Name: nodetypes/http%3A%2F%2Fwww.open-o.org%2Ftosca%2Fnfv%2Fns/tosca.nodes.nfv.NS/propertiesdefinition/Properties.xsd
+Content-Type: text/xml
+

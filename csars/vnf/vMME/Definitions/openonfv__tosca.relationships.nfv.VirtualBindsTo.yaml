@@ -1,0 +1,4 @@
+relationship_types: 
+  tosca.relationships.nfv.VirtualBindsTo: 
+    derived_from: tosca.relationships.Root
+tosca_definitions_version: tosca_simple_yaml_1_0

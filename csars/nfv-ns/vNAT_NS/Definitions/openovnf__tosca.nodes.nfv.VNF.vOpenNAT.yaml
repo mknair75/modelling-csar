@@ -1,0 +1,84 @@
+imports: 
+- openonfv__tosca.requirements.nfv.VirtualBinding.yaml
+- openonfv__tosca.requirements.nfv.VirtualLink.yaml
+- openovnf__tosca.nodes.nfv.VNF.yaml
+node_types: 
+  tosca.nodes.nfv.VNF.vOpenNAT: 
+    derived_from: tosca.nodes.nfv.VNF
+    properties: 
+      vnfProductName: 
+        default: openNAT
+        required: false
+        type: string
+      vnfdVersion: 
+        default: 1.0.0
+        required: false
+        type: string
+      vnfProvider: 
+        default: intel
+        required: false
+        type: string
+      vnfmInfo: 
+        default: GVNFM
+        required: false
+        type: string
+      csarVersion: 
+        default: 1.0.0
+        required: false
+        type: string
+      vnfdId: 
+        default: openNAT-1.0
+        required: false
+        type: string
+      csarProvider: 
+        default: intel
+        required: false
+        type: string
+      vnfProductInfoDescription: 
+        default: openNAT
+        required: false
+        type: string
+      version: 
+        default: 1.0.0
+        required: false
+        type: string
+      csarType: 
+        default: NFAR
+        required: false
+        type: string
+      vendor: 
+        default: intel
+        required: false
+        type: string
+      localizationLanguage: 
+        default: '[english, chinese]'
+        required: false
+        type: string
+      id: 
+        default: openNAT-1.0
+        required: false
+        type: string
+      defaultLocalizationLanguage: 
+        default: english
+        required: false
+        type: string
+      vnfProductInfoName: 
+        default: openNAT
+        required: false
+        type: string
+      vnfSoftwareVersion: 
+        default: 1.0.0
+        required: false
+        type: string
+    requirements: 
+    - sriov_plane: 
+        capability: tosca.capabilities.nfv.VirtualBindable
+        occurrences: 
+        - 0
+        - UNBOUNDED
+    - virtualLink: 
+        capability: tosca.capabilities.nfv.VirtualLinkable
+        occurrences: 
+        - 0
+        - UNBOUNDED
+tosca_definitions_version: tosca_simple_yaml_1_0
