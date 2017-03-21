@@ -1,0 +1,56 @@
+imports: 
+- openonfv__tosca.requirements.nfv.VirtualBinding.yaml
+- openonfv__tosca.requirements.nfv.VirtualLink.yaml
+- openonfv__tosca.requirements.nfv.VirtualBinding.yaml
+- openonfv__tosca.requirements.nfv.VirtualBinding.yaml
+- openovnf__tosca.nodes.nfv.VNF.yaml
+node_types: 
+  tosca.nodes.nfv.VNF.vPCRF: 
+    derived_from: tosca.nodes.nfv.VNF
+    properties: 
+      vendor: 
+        default: Huawei
+        required: false
+        type: string
+      csarVersion: 
+        default: v1.0
+        required: false
+        type: string
+      csarProvider: 
+        default: Huawei
+        required: false
+        type: string
+      id: 
+        default: vPCRF
+        required: false
+        type: string
+      version: 
+        default: v1.0
+        required: false
+        type: string
+      csarType: 
+        default: NFAR
+        required: false
+        type: string
+    requirements: 
+    - toManageNet: 
+        capability: tosca.capabilities.nfv.VirtualBindable
+        occurrences: 
+        - 0
+        - UNBOUNDED
+    - virtualLink: 
+        capability: tosca.capabilities.nfv.VirtualLinkable
+        occurrences: 
+        - 0
+        - UNBOUNDED
+    - toDataNet: 
+        capability: tosca.capabilities.nfv.VirtualBindable
+        occurrences: 
+        - 0
+        - UNBOUNDED
+    - toSignalNet: 
+        capability: tosca.capabilities.nfv.VirtualBindable
+        occurrences: 
+        - 0
+        - UNBOUNDED
+tosca_definitions_version: tosca_simple_yaml_1_0

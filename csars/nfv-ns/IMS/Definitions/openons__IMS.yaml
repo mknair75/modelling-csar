@@ -1,0 +1,116 @@
+imports: 
+- openovnf__tosca.nodes.nfv.VNF.yaml
+- openonfv__tosca.relationships.nfv.VirtualLinksTo.yaml
+- openonfv__tosca.requirements.nfv.VirtualBinding.yaml
+- openonfv__tosca.requirements.nfv.VirtualLink.yaml
+- openonfv__tosca.capabilities.nfv.VirtualLinkable.yaml
+- openovnf__tosca.nodes.nfv.VNF.vSBC.yaml
+- openons__tosca.nodes.nfv.NS.IMS.yaml
+- openonfv__tosca.nodes.nfv.ext.zte.VL.yaml
+metadata: 
+  vendor: CM
+  csarVersion: v1.0
+  name: IMS
+  csarProvider: CM
+  id: IMS
+  version: v1.0
+  csarType: NSAR
+topology_template: 
+  node_templates: 
+    DATA_NET: 
+      attributes: 
+        tosca_name: DATA_NET
+      type: tosca.nodes.nfv.ext.zte.VL
+    vTAS: 
+      attributes: 
+        tosca_name: vTAS
+      requirements: 
+      - virtualLink: 
+          capability: virtual_linkable
+          node: EMS_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - virtualLink: 
+          capability: virtual_linkable
+          node: VNFM_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - virtualLink: 
+          capability: virtual_linkable
+          node: CONTRAL_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VNF
+    vCSCF: 
+      attributes: 
+        tosca_name: vCSCF
+      requirements: 
+      - virtualLink: 
+          capability: virtual_linkable
+          node: EMS_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - virtualLink: 
+          capability: virtual_linkable
+          node: VNFM_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - virtualLink: 
+          capability: virtual_linkable
+          node: CONTRAL_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VNF
+    vSBC: 
+      attributes: 
+        tosca_name: vSBC
+      properties: 
+        vendor: Huawei
+        csarVersion: v1.0
+        csarProvider: Huawei
+        id: vSBC_vP-CSCF
+        version: v1.0
+        csarType: NFAR
+      requirements: 
+      - toManageNet: 
+          capability: virtual_linkable
+          node: EMS_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - toManageNet: 
+          capability: virtual_linkable
+          node: VNFM_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - toSignalNet1: 
+          capability: virtual_linkable
+          node: CONTRAL_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - toMediaNet1: 
+          capability: virtual_linkable
+          node: DATA_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - toMediaNet2: 
+          node: tosca.nodes.Root
+      - virtualLink: 
+          node: tosca.nodes.Root
+      - toSignalNet2: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VNF.vSBC
+    EMS_NET: 
+      attributes: 
+        tosca_name: EMS_NET
+      type: tosca.nodes.nfv.ext.zte.VL
+    VNFM_NET: 
+      attributes: 
+        tosca_name: VNFM_NET
+      type: tosca.nodes.nfv.ext.zte.VL
+    CONTRAL_NET: 
+      attributes: 
+        tosca_name: CONTRAL_NET
+      type: tosca.nodes.nfv.ext.zte.VL
+  substitution_mappings: 
+    node_type: tosca.nodes.nfv.NS.IMS
+tosca_definitions_version: tosca_simple_yaml_1_0

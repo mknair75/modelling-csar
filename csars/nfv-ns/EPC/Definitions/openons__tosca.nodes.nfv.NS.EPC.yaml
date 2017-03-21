@@ -1,0 +1,38 @@
+imports: 
+- openonfv__tosca.requirements.nfv.VirtualLink.yaml
+- openons__tosca.nodes.nfv.NS.yaml
+node_types: 
+  tosca.nodes.nfv.NS.EPC: 
+    derived_from: tosca.nodes.nfv.NS
+    properties: 
+      vendor: 
+        required: false
+        type: string
+      csarVersion: 
+        default: v1.0
+        required: false
+        type: string
+      name: 
+        required: false
+        type: string
+      csarProvider: 
+        default: CM
+        required: false
+        type: string
+      id: 
+        required: false
+        type: string
+      version: 
+        required: false
+        type: string
+      csarType: 
+        default: NSAR
+        required: false
+        type: string
+    requirements: 
+    - virtualLink: 
+        capability: tosca.capabilities.nfv.VirtualLinkable
+        occurrences: 
+        - 0
+        - UNBOUNDED
+tosca_definitions_version: tosca_simple_yaml_1_0

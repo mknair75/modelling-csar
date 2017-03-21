@@ -1,0 +1,25 @@
+imports: 
+- openonfv__tosca.requirements.nfv.VirtualLink.yaml
+node_types: 
+  tosca.nodes.nfv.NS: 
+    derived_from: tosca.nodes.Root
+    properties: 
+      vendor: 
+        required: false
+        type: string
+      name: 
+        required: false
+        type: string
+      id: 
+        required: false
+        type: string
+      version: 
+        required: false
+        type: string
+    requirements: 
+    - virtualLink: 
+        capability: tosca.capabilities.nfv.VirtualLinkable
+        occurrences: 
+        - 0
+        - UNBOUNDED
+tosca_definitions_version: tosca_simple_yaml_1_0

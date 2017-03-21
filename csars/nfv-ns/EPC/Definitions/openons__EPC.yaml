@@ -1,0 +1,144 @@
+imports: 
+- openons__tosca.nodes.nfv.NS.EPC.yaml
+- openovnf__tosca.nodes.nfv.VNF.vPCRF.yaml
+- openovnf__tosca.nodes.nfv.VNF.yaml
+- openonfv__tosca.relationships.nfv.VirtualLinksTo.yaml
+- openovnf__tosca.nodes.nfv.VNF.vSPGW.yaml
+- openonfv__tosca.requirements.nfv.VirtualBinding.yaml
+- openonfv__tosca.requirements.nfv.VirtualLink.yaml
+- openonfv__tosca.capabilities.nfv.VirtualLinkable.yaml
+- openovnf__tosca.nodes.nfv.VNF.vMME.yaml
+- openonfv__tosca.nodes.nfv.ext.zte.VL.yaml
+metadata: 
+  vendor: 
+  csarVersion: v1.0
+  name: 
+  csarProvider: CM
+  id: 
+  version: 
+  csarType: NSAR
+topology_template: 
+  node_templates: 
+    DATA_NET: 
+      attributes: 
+        tosca_name: DATA_NET
+      type: tosca.nodes.nfv.ext.zte.VL
+    vSPGW: 
+      attributes: 
+        tosca_name: vSPGW
+      properties: 
+        vendor: Huawei
+        csarVersion: v1.0
+        csarProvider: Huawei
+        id: vCPE
+        version: v1.0
+        csarType: NFAR
+      requirements: 
+      - toOM: 
+          capability: virtual_linkable
+          node: EMS_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - toOM: 
+          capability: virtual_linkable
+          node: VNFM_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - toExternal: 
+          capability: virtual_linkable
+          node: DATA_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - toExternal: 
+          capability: virtual_linkable
+          node: CONTRAL_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - virtualLink: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VNF.vSPGW
+    EMS_NET: 
+      attributes: 
+        tosca_name: EMS_NET
+      type: tosca.nodes.nfv.ext.zte.VL
+    vMME: 
+      attributes: 
+        tosca_name: vMME
+      properties: 
+        vendor: ERICSSON
+        csarVersion: v1.0
+        csarProvider: ERICSSON
+        id: vMME
+        version: v1.0
+        csarType: NFAR
+      requirements: 
+      - toManageNet: 
+          capability: virtual_linkable
+          node: EMS_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - toManageNet: 
+          capability: virtual_linkable
+          node: VNFM_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - toExtNet: 
+          capability: virtual_linkable
+          node: CONTRAL_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - virtualLink: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VNF.vMME
+    vPCRF: 
+      attributes: 
+        tosca_name: vPCRF
+      properties: 
+        vendor: Huawei
+        csarVersion: v1.0
+        csarProvider: Huawei
+        id: vPCRF
+        version: v1.0
+        csarType: NFAR
+      requirements: 
+      - toManageNet: 
+          capability: virtual_linkable
+          node: EMS_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - toManageNet: 
+          capability: virtual_linkable
+          node: VNFM_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - toSignalNet: 
+          capability: virtual_linkable
+          node: CONTRAL_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - virtualLink: 
+          node: tosca.nodes.Root
+      - toDataNet: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VNF.vPCRF
+    VNFM_NET: 
+      attributes: 
+        tosca_name: VNFM_NET
+      type: tosca.nodes.nfv.ext.zte.VL
+    pHSS: 
+      attributes: 
+        tosca_name: pHSS
+      requirements: 
+      - virtualLink: 
+          capability: virtual_linkable
+          node: CONTRAL_NET
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      type: tosca.nodes.nfv.VNF
+    CONTRAL_NET: 
+      attributes: 
+        tosca_name: CONTRAL_NET
+      type: tosca.nodes.nfv.ext.zte.VL
+  substitution_mappings: 
+    node_type: tosca.nodes.nfv.NS.EPC
+tosca_definitions_version: tosca_simple_yaml_1_0
