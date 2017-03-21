@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_ns0-tosca.artifacts.nfv.SwImage" targetNamespace="http://www.open-o.org/tosca/nfv">
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" location="../artifacttypes/http%253A%252F%252Fwww.open-o.org%252Ftosca%252Fnfv/tosca.artifacts.nfv.SwImage/propertiesdefinition/Properties.xsd" importType="http://www.w3.org/2001/XMLSchema" winery:wpd="true"/>
+    <tosca:ArtifactType name="tosca.artifacts.nfv.SwImage" targetNamespace="http://www.open-o.org/tosca/nfv">
+        <winery:PropertiesDefinition elementname="Properties" namespace="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery">
+            <winery:properties>
+                <winery:key>name</winery:key>
+                <winery:required>true</winery:required>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>version</winery:key>
+                <winery:required>true</winery:required>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>checksum</winery:key>
+                <winery:required>true</winery:required>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>container_format</winery:key>
+                <winery:required>true</winery:required>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>disk_format</winery:key>
+                <winery:required>true</winery:required>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>min_disk</winery:key>
+                <winery:required>true</winery:required>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>min_ram</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>size</winery:key>
+                <winery:required>true</winery:required>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>sw_image</winery:key>
+                <winery:required>true</winery:required>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>operating_system</winery:key>
+                <winery:type>xsd:string</winery:type>
+            </winery:properties>
+            <winery:properties>
+                <winery:key>supported _virtualization_enviroment</winery:key>
+                <winery:type>list_string</winery:type>
+            </winery:properties>
+        </winery:PropertiesDefinition>
+        <tosca:PropertiesDefinition xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" type="ns1:Properties"/>
+    </tosca:ArtifactType>
+</tosca:Definitions>

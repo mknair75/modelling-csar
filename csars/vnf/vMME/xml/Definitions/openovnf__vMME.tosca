@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tosca:Definitions xmlns:tosca="http://docs.oasis-open.org/tosca/ns/2011/12" xmlns:winery="http://www.opentosca.org/winery/extensions/tosca/2013/02/12" xmlns:ns0="http://www.eclipse.org/winery/model/selfservice" id="winery-defs-for_openovnf-vMME" targetNamespace="http://www.open-o.org/tosca/nfv/vnf">
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.capabilities.Scalable.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.capabilities.nfv.Metric.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.nodes.nfv.VnfVirtualLinkDesc.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.capabilities.network.Bindable.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.capabilities.Attachment.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.capabilities.nfv.VirtualBindable.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.capabilities.nfv.VirtualLinkable.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv/vnf" location="openovnf__tosca.nodes.nfv.VNF.vMME.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.requirements.nfv.VirtualStorage.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.nodes.nfv.VDU.VirtualStorage.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.relationships.nfv.VirtualBindsTo.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.nodes.nfv.VDU.Compute.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.relationships.nfv.VirtualLinksTo.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.capabilities.nfv.VirtualCompute.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.capabilities.Container.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.capabilities.nfv.VirtualStorage.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.requirements.nfv.VirtualBinding.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.capabilities.Endpoint.Admin.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.capabilities.OperatingSystem.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.nodes.nfv.VduCpd.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:Import namespace="http://www.open-o.org/tosca/nfv" location="openonfv__tosca.relationships.nfv.VDU.AttachedTo.tosca" importType="http://docs.oasis-open.org/tosca/ns/2011/12"/>
+    <tosca:ServiceTemplate xmlns:openovnf="http://www.open-o.org/tosca/nfv/vnf" id="vMME" name="vMME" targetNamespace="http://www.open-o.org/tosca/nfv/vnf" substitutableNodeType="openovnf:tosca.nodes.nfv.VNF.vMME" template_source="derived">
+        <tosca:documentation/>
+        <tosca:BoundaryDefinitions>
+            <tosca:Properties>
+                <BoundaryPropertyDefinition>
+                    <Inputs/>
+                    <MetaDatas>
+                        <MetaData key="id" value="vMME" tag="10" required="false"/>
+                        <MetaData key="vendor" value="ERICSSON" tag="10" required="false"/>
+                        <MetaData key="version" value="v1.0" tag="10" required="false"/>
+                        <MetaData key="csarType" value="NFAR"/>
+                        <MetaData key="csarVersion" value="v1.0"/>
+                        <MetaData key="csarProvider" value="ERICSSON"/>
+                    </MetaDatas>
+                </BoundaryPropertyDefinition>
+            </tosca:Properties>
+            <tosca:Requirements/>
+            <tosca:Capabilities/>
+        </tosca:BoundaryDefinitions>
+        <tosca:TopologyTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="FSB" id="tosca_nodes_nfv_VDU_Compute" type="openonfv:tosca.nodes.nfv.VDU.Compute" winery:x="230" winery:y="279">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <name>FSB</name>
+                        <descrption>the virtual machine of FSB</descrption>
+                        <boot_order/>
+                        <nfvi_constraints/>
+                        <configurable_properties>{"test":{"additional_vnfc_configurable_properties":{"aaa":"1"}}}</configurable_properties>
+                        <private_address/>
+                        <public_address/>
+                        <networks/>
+                        <ports/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="local_storage" id="4ef9cb9a-c527-4029-a078-8cf4386ad2721" type="openonfv:tosca.capabilities.Attachment" node="" capability=""/>
+                    <tosca:Requirement name="virtual_storage" id="53a06211-164d-4764-ba20-3e9ce84d514f1" type="openonfv:tosca.requirements.nfv.VirtualStorage" node="" capability=""/>
+                </tosca:Requirements>
+                <tosca:Capabilities>
+                    <tosca:Capability name="virtual_compute" id="01f3f58e-7536-4b4b-b8c3-ec229511389d1" type="openonfv:tosca.capabilities.nfv.VirtualCompute" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<requested_additional_capabilities>{}</requested_additional_capabilities>
+<virtual_memory>{"virtual_mem_size":"2G"}</virtual_memory>
+<virtual_cpu>{"num_virtual_cpu":2}</virtual_cpu>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="virtual_binding" id="4aa11d73-bf09-4212-8e31-46d56d9cf44d1" type="openonfv:tosca.capabilities.nfv.VirtualBindable" node="" capability=""/>
+                    <tosca:Capability name="monitoring_parameter" id="8f290173-8b55-4af2-aefe-61f0bf1e18621" type="openonfv:tosca.capabilities.nfv.Metric" node="" capability=""/>
+                    <tosca:Capability name="host" id="2d4144cc-189a-4be2-86ba-fc29eaedd5251" type="openonfv:tosca.capabilities.Container" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<num_cpus/>
+<cpu_frequency/>
+<disk_size/>
+<mem_size/>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="endpoint" id="5a511fb1-4331-42ec-bdea-c27e19727b0f1" type="openonfv:tosca.capabilities.Endpoint.Admin" node="" capability=""/>
+                    <tosca:Capability name="os" id="911ac7e7-8d46-4c08-8c04-c8a428d44db51" type="openonfv:tosca.capabilities.OperatingSystem" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<architecture/>
+<type/>
+<distribution/>
+<version/>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="scalable" id="6ea91e80-fb50-4feb-9454-2c8902d4a7c71" type="openonfv:tosca.capabilities.Scalable" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<min_instances/>
+<max_instances/>
+<default_instances/>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="binding" id="b678a5bb-406f-4d8d-9a07-b82092fd6a4a1" type="openonfv:tosca.capabilities.network.Bindable" node="" capability=""/>
+                </tosca:Capabilities>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="FSB_Storage" id="tosca_nodes_nfv_VDU_VirtualStorage" type="openonfv:tosca.nodes.nfv.VDU.VirtualStorage" winery:x="230" winery:y="62">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <id>FSB_Storage</id>
+                        <type_of_storage>volume</type_of_storage>
+                        <size_of_storage>160G</size_of_storage>
+                        <rdma_enabled>false</rdma_enabled>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Capabilities>
+                    <tosca:Capability name="virtual_storage" id="761d695a-be20-4794-8b70-eedbc3796b2d1" type="openonfv:tosca.capabilities.nfv.VirtualStorage" node="" capability=""/>
+                </tosca:Capabilities>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="FSB2Intranet1" id="tosca_nodes_nfv_VduCpd" type="openonfv:tosca.nodes.nfv.VduCpd" winery:x="166" winery:y="427">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <bitrate_requirement/>
+                        <virtual_network_interface_requirements/>
+                        <layer_protocol>ipv4</layer_protocol>
+                        <role>root</role>
+                        <description/>
+                        <address_data/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="virtual_binding" id="3b34ec52-0228-4b5f-9120-ce13f125878c1" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                    <tosca:Requirement name="virtual_link" id="c42b7300-6dff-4998-9ddd-31caab94b6141" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                </tosca:Requirements>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="Intranet1" id="tosca_nodes_nfv_VnfVirtualLinkDesc" type="openonfv:tosca.nodes.nfv.VnfVirtualLinkDesc" winery:x="272" winery:y="663">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <connectivity_type>{"layer_protocol":"ipv4","flow_pattern":""}</connectivity_type>
+                        <description/>
+                        <test_access/>
+                        <vl_flavours>{"flavours":"test1"}</vl_flavours>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Capabilities>
+                    <tosca:Capability name="monitoring_parameters" id="de2aded0-6973-44f8-bb9b-16515f841def1" type="openonfv:tosca.capabilities.nfv.Metric" node="" capability=""/>
+                    <tosca:Capability name="virtual_linkable" id="c303f0d8-a924-4fd6-8d9c-a6e0efd134c61" type="openonfv:tosca.capabilities.nfv.VirtualLinkable" node="" capability=""/>
+                </tosca:Capabilities>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="NCB" id="tosca_nodes_nfv_VDU_Compute_2" type="openonfv:tosca.nodes.nfv.VDU.Compute" winery:x="438" winery:y="267">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <name>NCB</name>
+                        <descrption>the virtual machine of NCB</descrption>
+                        <boot_order/>
+                        <nfvi_constraints/>
+                        <configurable_properties>{"test":{"additional_vnfc_configurable_properties":{"aaa":"1"}}}</configurable_properties>
+                        <private_address/>
+                        <public_address/>
+                        <networks/>
+                        <ports/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="local_storage" id="4ef9cb9a-c527-4029-a078-8cf4386ad2723" type="openonfv:tosca.capabilities.Attachment" node="" capability=""/>
+                    <tosca:Requirement name="virtual_storage" id="53a06211-164d-4764-ba20-3e9ce84d514f3" type="openonfv:tosca.requirements.nfv.VirtualStorage" node="" capability=""/>
+                </tosca:Requirements>
+                <tosca:Capabilities>
+                    <tosca:Capability name="virtual_compute" id="01f3f58e-7536-4b4b-b8c3-ec229511389d3" type="openonfv:tosca.capabilities.nfv.VirtualCompute" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<requested_additional_capabilities>{}</requested_additional_capabilities>
+<virtual_memory>{"virtual_mem_size":"2G"}</virtual_memory>
+<virtual_cpu>{"num_virtual_cpu":2}</virtual_cpu>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="virtual_binding" id="4aa11d73-bf09-4212-8e31-46d56d9cf44d3" type="openonfv:tosca.capabilities.nfv.VirtualBindable" node="" capability=""/>
+                    <tosca:Capability name="monitoring_parameter" id="8f290173-8b55-4af2-aefe-61f0bf1e18623" type="openonfv:tosca.capabilities.nfv.Metric" node="" capability=""/>
+                    <tosca:Capability name="host" id="2d4144cc-189a-4be2-86ba-fc29eaedd5253" type="openonfv:tosca.capabilities.Container" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<num_cpus/>
+<cpu_frequency/>
+<disk_size/>
+<mem_size/>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="endpoint" id="5a511fb1-4331-42ec-bdea-c27e19727b0f3" type="openonfv:tosca.capabilities.Endpoint.Admin" node="" capability=""/>
+                    <tosca:Capability name="os" id="911ac7e7-8d46-4c08-8c04-c8a428d44db53" type="openonfv:tosca.capabilities.OperatingSystem" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<architecture/>
+<type/>
+<distribution/>
+<version/>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="scalable" id="6ea91e80-fb50-4feb-9454-2c8902d4a7c73" type="openonfv:tosca.capabilities.Scalable" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<min_instances/>
+<max_instances/>
+<default_instances/>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="binding" id="b678a5bb-406f-4d8d-9a07-b82092fd6a4a3" type="openonfv:tosca.capabilities.network.Bindable" node="" capability=""/>
+                </tosca:Capabilities>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="NCB_Storage" id="tosca_nodes_nfv_VDU_VirtualStorage_2" type="openonfv:tosca.nodes.nfv.VDU.VirtualStorage" winery:x="438" winery:y="55">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <id>NCB_Storage</id>
+                        <type_of_storage>volume</type_of_storage>
+                        <size_of_storage>1G</size_of_storage>
+                        <rdma_enabled/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Capabilities>
+                    <tosca:Capability name="virtual_storage" id="761d695a-be20-4794-8b70-eedbc3796b2d3" type="openonfv:tosca.capabilities.nfv.VirtualStorage" node="" capability=""/>
+                </tosca:Capabilities>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="NCB2Intranet1" id="tosca_nodes_nfv_VduCpd_2" type="openonfv:tosca.nodes.nfv.VduCpd" winery:x="385" winery:y="427">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <bitrate_requirement/>
+                        <virtual_network_interface_requirements/>
+                        <layer_protocol>ipv4</layer_protocol>
+                        <role>root</role>
+                        <description/>
+                        <address_data/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="virtual_binding" id="3b34ec52-0228-4b5f-9120-ce13f125878c3" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                    <tosca:Requirement name="virtual_link" id="c42b7300-6dff-4998-9ddd-31caab94b6143" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                </tosca:Requirements>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="Intranet2" id="tosca_nodes_nfv_VnfVirtualLinkDesc_2" type="openonfv:tosca.nodes.nfv.VnfVirtualLinkDesc" winery:x="826" winery:y="658">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <connectivity_type>{"layer_protocol":"ipv4","flow_pattern":""}</connectivity_type>
+                        <description/>
+                        <test_access/>
+                        <vl_flavours>{"flavours":"test2"}</vl_flavours>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Capabilities>
+                    <tosca:Capability name="monitoring_parameters" id="de2aded0-6973-44f8-bb9b-16515f841def3" type="openonfv:tosca.capabilities.nfv.Metric" node="" capability=""/>
+                    <tosca:Capability name="virtual_linkable" id="c303f0d8-a924-4fd6-8d9c-a6e0efd134c63" type="openonfv:tosca.capabilities.nfv.VirtualLinkable" node="" capability=""/>
+                </tosca:Capabilities>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="GPB" id="tosca_nodes_nfv_VDU_Compute_3" type="openonfv:tosca.nodes.nfv.VDU.Compute" winery:x="630" winery:y="253">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <name>GPB</name>
+                        <descrption>the virtual machine of GPB</descrption>
+                        <boot_order/>
+                        <nfvi_constraints/>
+                        <configurable_properties>{"test":{"additional_vnfc_configurable_properties":{"aaa":"1"}}}</configurable_properties>
+                        <private_address/>
+                        <public_address/>
+                        <networks/>
+                        <ports/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="local_storage" id="4ef9cb9a-c527-4029-a078-8cf4386ad2724" type="openonfv:tosca.capabilities.Attachment" node="" capability=""/>
+                    <tosca:Requirement name="virtual_storage" id="53a06211-164d-4764-ba20-3e9ce84d514f4" type="openonfv:tosca.requirements.nfv.VirtualStorage" node="" capability=""/>
+                </tosca:Requirements>
+                <tosca:Capabilities>
+                    <tosca:Capability name="virtual_compute" id="01f3f58e-7536-4b4b-b8c3-ec229511389d4" type="openonfv:tosca.capabilities.nfv.VirtualCompute" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<requested_additional_capabilities>{}</requested_additional_capabilities>
+<virtual_memory>{"virtual_mem_size":"4G"}</virtual_memory>
+<virtual_cpu>{"num_virtual_cpu":4}</virtual_cpu>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="virtual_binding" id="4aa11d73-bf09-4212-8e31-46d56d9cf44d4" type="openonfv:tosca.capabilities.nfv.VirtualBindable" node="" capability=""/>
+                    <tosca:Capability name="monitoring_parameter" id="8f290173-8b55-4af2-aefe-61f0bf1e18624" type="openonfv:tosca.capabilities.nfv.Metric" node="" capability=""/>
+                    <tosca:Capability name="host" id="2d4144cc-189a-4be2-86ba-fc29eaedd5254" type="openonfv:tosca.capabilities.Container" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<num_cpus/>
+<cpu_frequency/>
+<disk_size/>
+<mem_size/>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="endpoint" id="5a511fb1-4331-42ec-bdea-c27e19727b0f4" type="openonfv:tosca.capabilities.Endpoint.Admin" node="" capability=""/>
+                    <tosca:Capability name="os" id="911ac7e7-8d46-4c08-8c04-c8a428d44db54" type="openonfv:tosca.capabilities.OperatingSystem" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<architecture/>
+<type/>
+<distribution/>
+<version/>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="scalable" id="6ea91e80-fb50-4feb-9454-2c8902d4a7c74" type="openonfv:tosca.capabilities.Scalable" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<min_instances/>
+<max_instances/>
+<default_instances/>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="binding" id="b678a5bb-406f-4d8d-9a07-b82092fd6a4a4" type="openonfv:tosca.capabilities.network.Bindable" node="" capability=""/>
+                </tosca:Capabilities>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="vLC" id="tosca_nodes_nfv_VDU_Compute_4" type="openonfv:tosca.nodes.nfv.VDU.Compute" winery:x="877" winery:y="246">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <name>vLC</name>
+                        <descrption>the virtual machine of vLC</descrption>
+                        <boot_order/>
+                        <nfvi_constraints/>
+                        <configurable_properties>{"test":{"additional_vnfc_configurable_properties":{"aaa":"1"}}}</configurable_properties>
+                        <private_address/>
+                        <public_address/>
+                        <networks/>
+                        <ports/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="local_storage" id="4ef9cb9a-c527-4029-a078-8cf4386ad2725" type="openonfv:tosca.capabilities.Attachment" node="" capability=""/>
+                    <tosca:Requirement name="virtual_storage" id="53a06211-164d-4764-ba20-3e9ce84d514f5" type="openonfv:tosca.requirements.nfv.VirtualStorage" node="" capability=""/>
+                </tosca:Requirements>
+                <tosca:Capabilities>
+                    <tosca:Capability name="virtual_compute" id="01f3f58e-7536-4b4b-b8c3-ec229511389d5" type="openonfv:tosca.capabilities.nfv.VirtualCompute" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<requested_additional_capabilities>{}</requested_additional_capabilities>
+<virtual_memory>{"virtual_mem_size":"5G"}</virtual_memory>
+<virtual_cpu>{"num_virtual_cpu":4}</virtual_cpu>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="virtual_binding" id="4aa11d73-bf09-4212-8e31-46d56d9cf44d5" type="openonfv:tosca.capabilities.nfv.VirtualBindable" node="" capability=""/>
+                    <tosca:Capability name="monitoring_parameter" id="8f290173-8b55-4af2-aefe-61f0bf1e18625" type="openonfv:tosca.capabilities.nfv.Metric" node="" capability=""/>
+                    <tosca:Capability name="host" id="2d4144cc-189a-4be2-86ba-fc29eaedd5255" type="openonfv:tosca.capabilities.Container" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<num_cpus/>
+<cpu_frequency/>
+<disk_size/>
+<mem_size/>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="endpoint" id="5a511fb1-4331-42ec-bdea-c27e19727b0f5" type="openonfv:tosca.capabilities.Endpoint.Admin" node="" capability=""/>
+                    <tosca:Capability name="os" id="911ac7e7-8d46-4c08-8c04-c8a428d44db55" type="openonfv:tosca.capabilities.OperatingSystem" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<architecture/>
+<type/>
+<distribution/>
+<version/>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="scalable" id="6ea91e80-fb50-4feb-9454-2c8902d4a7c75" type="openonfv:tosca.capabilities.Scalable" node="" capability="">
+                        <tosca:Properties>
+                            <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+<min_instances/>
+<max_instances/>
+<default_instances/>
+					</ns1:Properties>
+                        </tosca:Properties>
+                    </tosca:Capability>
+                    <tosca:Capability name="binding" id="b678a5bb-406f-4d8d-9a07-b82092fd6a4a5" type="openonfv:tosca.capabilities.network.Bindable" node="" capability=""/>
+                </tosca:Capabilities>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="GPB_Storage" id="tosca_nodes_nfv_VDU_VirtualStorage_3" type="openonfv:tosca.nodes.nfv.VDU.VirtualStorage" winery:x="629" winery:y="56">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <id>GPB_Storage</id>
+                        <type_of_storage>volume</type_of_storage>
+                        <size_of_storage>1G</size_of_storage>
+                        <rdma_enabled/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Capabilities>
+                    <tosca:Capability name="virtual_storage" id="761d695a-be20-4794-8b70-eedbc3796b2d4" type="openonfv:tosca.capabilities.nfv.VirtualStorage" node="" capability=""/>
+                </tosca:Capabilities>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="vLC_Storage" id="tosca_nodes_nfv_VDU_VirtualStorage_4" type="openonfv:tosca.nodes.nfv.VDU.VirtualStorage" winery:x="878" winery:y="47">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <id>vLC_Storage</id>
+                        <type_of_storage>volume</type_of_storage>
+                        <size_of_storage>1G</size_of_storage>
+                        <rdma_enabled/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Capabilities>
+                    <tosca:Capability name="virtual_storage" id="761d695a-be20-4794-8b70-eedbc3796b2d5" type="openonfv:tosca.capabilities.nfv.VirtualStorage" node="" capability=""/>
+                </tosca:Capabilities>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="GPB2Intranet1" id="tosca_nodes_nfv_VduCpd_3" type="openonfv:tosca.nodes.nfv.VduCpd" winery:x="579" winery:y="413">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <bitrate_requirement/>
+                        <virtual_network_interface_requirements/>
+                        <layer_protocol>ipv4</layer_protocol>
+                        <role>root</role>
+                        <description/>
+                        <address_data/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="virtual_binding" id="3b34ec52-0228-4b5f-9120-ce13f125878c4" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                    <tosca:Requirement name="virtual_link" id="c42b7300-6dff-4998-9ddd-31caab94b6144" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                </tosca:Requirements>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="vLC2Intranet1" id="tosca_nodes_nfv_VduCpd_4" type="openonfv:tosca.nodes.nfv.VduCpd" winery:x="796" winery:y="415">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <bitrate_requirement/>
+                        <virtual_network_interface_requirements/>
+                        <layer_protocol>ipv4</layer_protocol>
+                        <role>root</role>
+                        <description/>
+                        <address_data/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="virtual_binding" id="3b34ec52-0228-4b5f-9120-ce13f125878c5" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                    <tosca:Requirement name="virtual_link" id="c42b7300-6dff-4998-9ddd-31caab94b6145" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                </tosca:Requirements>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="ToManageNet" id="tosca_nodes_nfv_VduCpd_5" type="openonfv:tosca.nodes.nfv.VduCpd" winery:x="90" winery:y="521">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <bitrate_requirement/>
+                        <virtual_network_interface_requirements/>
+                        <layer_protocol>ipv4</layer_protocol>
+                        <role>root</role>
+                        <description/>
+                        <address_data/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="virtual_binding" id="3b34ec52-0228-4b5f-9120-ce13f125878c6" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                    <tosca:Requirement name="virtual_link" id="c42b7300-6dff-4998-9ddd-31caab94b6146" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                </tosca:Requirements>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="ToExtNet" id="tosca_nodes_nfv_VduCpd_6" type="openonfv:tosca.nodes.nfv.VduCpd" winery:x="1076" winery:y="440">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <bitrate_requirement/>
+                        <virtual_network_interface_requirements/>
+                        <layer_protocol>ipv4</layer_protocol>
+                        <role>root</role>
+                        <description/>
+                        <address_data/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="virtual_binding" id="3b34ec52-0228-4b5f-9120-ce13f125878c7" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                    <tosca:Requirement name="virtual_link" id="c42b7300-6dff-4998-9ddd-31caab94b6147" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                </tosca:Requirements>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="FSB2Intranet1" id="tosca_nodes_nfv_VduCpd_7" type="openonfv:tosca.nodes.nfv.VduCpd" winery:x="302" winery:y="528">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <bitrate_requirement/>
+                        <virtual_network_interface_requirements/>
+                        <layer_protocol>ipv4</layer_protocol>
+                        <role>root</role>
+                        <description/>
+                        <address_data/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="virtual_binding" id="c4fc1e62-7f6f-45d4-beba-bd47f572d4448" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                    <tosca:Requirement name="virtual_link" id="73d2691e-fb59-4cee-9fee-353c188ef9e98" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                </tosca:Requirements>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="NCB2Intranet2" id="tosca_nodes_nfv_VduCpd_8" type="openonfv:tosca.nodes.nfv.VduCpd" winery:x="495" winery:y="529">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <bitrate_requirement/>
+                        <virtual_network_interface_requirements/>
+                        <layer_protocol>ipv4</layer_protocol>
+                        <role>root</role>
+                        <description/>
+                        <address_data/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="virtual_binding" id="c4fc1e62-7f6f-45d4-beba-bd47f572d4449" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                    <tosca:Requirement name="virtual_link" id="73d2691e-fb59-4cee-9fee-353c188ef9e99" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                </tosca:Requirements>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="GPB2Intranet2" id="tosca_nodes_nfv_VduCpd_9" type="openonfv:tosca.nodes.nfv.VduCpd" winery:x="705" winery:y="533">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <bitrate_requirement/>
+                        <virtual_network_interface_requirements/>
+                        <layer_protocol>ipv4</layer_protocol>
+                        <role>root</role>
+                        <description/>
+                        <address_data/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="virtual_binding" id="c4fc1e62-7f6f-45d4-beba-bd47f572d44410" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                    <tosca:Requirement name="virtual_link" id="73d2691e-fb59-4cee-9fee-353c188ef9e910" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                </tosca:Requirements>
+            </tosca:NodeTemplate>
+            <tosca:NodeTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="vLC2Intranet2" id="tosca_nodes_nfv_VduCpd_10" type="openonfv:tosca.nodes.nfv.VduCpd" winery:x="947" winery:y="533">
+                <tosca:documentation/>
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <bitrate_requirement/>
+                        <virtual_network_interface_requirements/>
+                        <layer_protocol>ipv4</layer_protocol>
+                        <role>root</role>
+                        <description/>
+                        <address_data/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:Requirements>
+                    <tosca:Requirement name="virtual_binding" id="c4fc1e62-7f6f-45d4-beba-bd47f572d44411" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                    <tosca:Requirement name="virtual_link" id="73d2691e-fb59-4cee-9fee-353c188ef9e911" type="openonfv:tosca.requirements.nfv.VirtualBinding" node="" capability=""/>
+                </tosca:Requirements>
+            </tosca:NodeTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_25" id="con_25" type="openonfv:tosca.relationships.nfv.VDU.AttachedTo">
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <location/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:SourceElement ref="53a06211-164d-4764-ba20-3e9ce84d514f1"/>
+                <tosca:TargetElement ref="761d695a-be20-4794-8b70-eedbc3796b2d1"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_48" id="con_48" type="openonfv:tosca.relationships.nfv.VirtualBindsTo">
+                <tosca:SourceElement ref="3b34ec52-0228-4b5f-9120-ce13f125878c1"/>
+                <tosca:TargetElement ref="4aa11d73-bf09-4212-8e31-46d56d9cf44d1"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_71" id="con_71" type="openonfv:tosca.relationships.nfv.VirtualLinksTo">
+                <tosca:SourceElement ref="c42b7300-6dff-4998-9ddd-31caab94b6141"/>
+                <tosca:TargetElement ref="c303f0d8-a924-4fd6-8d9c-a6e0efd134c61"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_202" id="con_202" type="openonfv:tosca.relationships.nfv.VirtualBindsTo">
+                <tosca:SourceElement ref="tosca_nodes_nfv_VduCpd_5"/>
+                <tosca:TargetElement ref="tosca_nodes_nfv_VDU_Compute"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_214" id="con_214" type="openonfv:tosca.relationships.nfv.VDU.AttachedTo">
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <location/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:SourceElement ref="53a06211-164d-4764-ba20-3e9ce84d514f3"/>
+                <tosca:TargetElement ref="761d695a-be20-4794-8b70-eedbc3796b2d3"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_228" id="con_228" type="openonfv:tosca.relationships.nfv.VirtualBindsTo">
+                <tosca:SourceElement ref="3b34ec52-0228-4b5f-9120-ce13f125878c3"/>
+                <tosca:TargetElement ref="4aa11d73-bf09-4212-8e31-46d56d9cf44d3"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_242" id="con_242" type="openonfv:tosca.relationships.nfv.VirtualLinksTo">
+                <tosca:SourceElement ref="c42b7300-6dff-4998-9ddd-31caab94b6143"/>
+                <tosca:TargetElement ref="c303f0d8-a924-4fd6-8d9c-a6e0efd134c61"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_256" id="con_256" type="openonfv:tosca.relationships.nfv.VDU.AttachedTo">
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <location/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:SourceElement ref="53a06211-164d-4764-ba20-3e9ce84d514f4"/>
+                <tosca:TargetElement ref="761d695a-be20-4794-8b70-eedbc3796b2d4"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_270" id="con_270" type="openonfv:tosca.relationships.nfv.VirtualBindsTo">
+                <tosca:SourceElement ref="3b34ec52-0228-4b5f-9120-ce13f125878c4"/>
+                <tosca:TargetElement ref="4aa11d73-bf09-4212-8e31-46d56d9cf44d4"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_286" id="con_286" type="openonfv:tosca.relationships.nfv.VirtualLinksTo">
+                <tosca:SourceElement ref="c42b7300-6dff-4998-9ddd-31caab94b6144"/>
+                <tosca:TargetElement ref="c303f0d8-a924-4fd6-8d9c-a6e0efd134c61"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_352" id="con_352" type="openonfv:tosca.relationships.nfv.VDU.AttachedTo">
+                <tosca:Properties>
+                    <ns1:Properties xmlns:ns1="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns="http://www.open-o.org/tosca/nfv/propertiesdefinition/winery" xmlns:ty="http://www.open-o.org/tosca/nfv">
+                        <location/>
+			</ns1:Properties>
+                </tosca:Properties>
+                <tosca:SourceElement ref="53a06211-164d-4764-ba20-3e9ce84d514f5"/>
+                <tosca:TargetElement ref="761d695a-be20-4794-8b70-eedbc3796b2d5"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_380" id="con_380" type="openonfv:tosca.relationships.nfv.VirtualLinksTo">
+                <tosca:SourceElement ref="c42b7300-6dff-4998-9ddd-31caab94b6145"/>
+                <tosca:TargetElement ref="c303f0d8-a924-4fd6-8d9c-a6e0efd134c61"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_394" id="con_394" type="openonfv:tosca.relationships.nfv.VirtualBindsTo">
+                <tosca:SourceElement ref="3b34ec52-0228-4b5f-9120-ce13f125878c5"/>
+                <tosca:TargetElement ref="4aa11d73-bf09-4212-8e31-46d56d9cf44d5"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_408" id="con_408" type="openonfv:tosca.relationships.nfv.VirtualBindsTo">
+                <tosca:SourceElement ref="3b34ec52-0228-4b5f-9120-ce13f125878c7"/>
+                <tosca:TargetElement ref="4aa11d73-bf09-4212-8e31-46d56d9cf44d5"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_272" id="con_272" type="openonfv:tosca.relationships.nfv.VirtualBindsTo">
+                <tosca:SourceElement ref="c4fc1e62-7f6f-45d4-beba-bd47f572d4448"/>
+                <tosca:TargetElement ref="4aa11d73-bf09-4212-8e31-46d56d9cf44d1"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_286" id="con_286" type="openonfv:tosca.relationships.nfv.VirtualLinksTo">
+                <tosca:SourceElement ref="73d2691e-fb59-4cee-9fee-353c188ef9e98"/>
+                <tosca:TargetElement ref="c303f0d8-a924-4fd6-8d9c-a6e0efd134c63"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_309" id="con_309" type="openonfv:tosca.relationships.nfv.VirtualBindsTo">
+                <tosca:SourceElement ref="c4fc1e62-7f6f-45d4-beba-bd47f572d4449"/>
+                <tosca:TargetElement ref="4aa11d73-bf09-4212-8e31-46d56d9cf44d3"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_323" id="con_323" type="openonfv:tosca.relationships.nfv.VirtualLinksTo">
+                <tosca:SourceElement ref="73d2691e-fb59-4cee-9fee-353c188ef9e99"/>
+                <tosca:TargetElement ref="c303f0d8-a924-4fd6-8d9c-a6e0efd134c63"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_346" id="con_346" type="openonfv:tosca.relationships.nfv.VirtualBindsTo">
+                <tosca:SourceElement ref="c4fc1e62-7f6f-45d4-beba-bd47f572d44410"/>
+                <tosca:TargetElement ref="4aa11d73-bf09-4212-8e31-46d56d9cf44d4"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_360" id="con_360" type="openonfv:tosca.relationships.nfv.VirtualLinksTo">
+                <tosca:SourceElement ref="73d2691e-fb59-4cee-9fee-353c188ef9e910"/>
+                <tosca:TargetElement ref="c303f0d8-a924-4fd6-8d9c-a6e0efd134c63"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_383" id="con_383" type="openonfv:tosca.relationships.nfv.VirtualBindsTo">
+                <tosca:SourceElement ref="c4fc1e62-7f6f-45d4-beba-bd47f572d44411"/>
+                <tosca:TargetElement ref="4aa11d73-bf09-4212-8e31-46d56d9cf44d5"/>
+            </tosca:RelationshipTemplate>
+            <tosca:RelationshipTemplate xmlns:openonfv="http://www.open-o.org/tosca/nfv" name="con_397" id="con_397" type="openonfv:tosca.relationships.nfv.VirtualLinksTo">
+                <tosca:SourceElement ref="73d2691e-fb59-4cee-9fee-353c188ef9e911"/>
+                <tosca:TargetElement ref="c303f0d8-a924-4fd6-8d9c-a6e0efd134c63"/>
+            </tosca:RelationshipTemplate>
+        </tosca:TopologyTemplate>
+    </tosca:ServiceTemplate>
+</tosca:Definitions>

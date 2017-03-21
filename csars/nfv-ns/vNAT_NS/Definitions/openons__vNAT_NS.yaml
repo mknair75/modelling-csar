@@ -1,0 +1,68 @@
+imports: 
+- openonfv__tosca.relationships.nfv.VirtualLinksTo.yaml
+- openonfv__tosca.nodes.nfv.VnfVirtualLinkDesc.yaml
+- openonfv__tosca.capabilities.nfv.Metric.yaml
+- openonfv__tosca.requirements.nfv.VirtualBinding.yaml
+- openonfv__tosca.requirements.nfv.VirtualLink.yaml
+- openovnf__tosca.nodes.nfv.VNF.vOpenNAT.yaml
+- openonfv__tosca.capabilities.nfv.VirtualLinkable.yaml
+- openons__tosca.nodes.nfv.NS.vNAT_NS.yaml
+metadata: 
+  vendor: 
+  csarVersion: v1.0
+  name: 
+  csarProvider: ZTE
+  id: 
+  version: 
+  csarType: NSAR
+topology_template: 
+  node_templates: 
+    test: 
+      attributes: 
+        tosca_name: test
+      properties: 
+        vl_flavours: 
+          physicalNetwork: sriov-test
+          networkType: vlan
+          segmentationId: 1
+        description: sriov_link
+        test_access: 
+        - test
+        connectivity_type: 
+          layer_protocol: ipv4
+          flow_pattern: mesh
+      type: tosca.nodes.nfv.VnfVirtualLinkDesc
+    vOpenNAT: 
+      attributes: 
+        tosca_name: vOpenNAT
+      properties: 
+        vnfProductName: openNAT
+        vnfdVersion: 1.0.0
+        vnfProvider: intel
+        vnfmInfo: GVNFM
+        csarVersion: 1.0.0
+        vnfdId: openNAT-1.0
+        csarProvider: intel
+        vnfProductInfoDescription: openNAT
+        version: 1.0.0
+        csarType: NFAR
+        vendor: intel
+        localizationLanguage: 
+        - english
+        - chinese
+        id: openNAT-1.0
+        defaultLocalizationLanguage: english
+        vnfProductInfoName: openNAT
+        vnfSoftwareVersion: 1.0.0
+      requirements: 
+      - sriov_plane: 
+          capability: virtual_linkable
+          node: test
+          relationship: 
+            type: tosca.relationships.nfv.VirtualLinksTo
+      - virtualLink: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VNF.vOpenNAT
+  substitution_mappings: 
+    node_type: tosca.nodes.nfv.NS.vNAT_NS
+tosca_definitions_version: tosca_simple_yaml_1_0

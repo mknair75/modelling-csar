@@ -1,0 +1,8 @@
+relationship_types: 
+  tosca.relationships.nfv.VDU.AttachedTo: 
+    derived_from: tosca.relationships.Root
+    properties: 
+      location: 
+        required: false
+        type: string
+tosca_definitions_version: tosca_simple_yaml_1_0

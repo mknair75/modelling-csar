@@ -1,0 +1,148 @@
+imports: 
+- openonfv__tosca.capabilities.Scalable.yaml
+- openonfv__tosca.capabilities.nfv.Metric.yaml
+- openonfv__tosca.capabilities.network.Bindable.yaml
+- openonfv__tosca.capabilities.Attachment.yaml
+- openonfv__tosca.capabilities.nfv.VirtualBindable.yaml
+- openonfv__tosca.requirements.nfv.VirtualStorage.yaml
+- openonfv__tosca.nodes.nfv.VDU.VirtualStorage.yaml
+- openonfv__tosca.relationships.nfv.VirtualBindsTo.yaml
+- openonfv__tosca.nodes.nfv.VDU.Compute.yaml
+- openonfv__tosca.artifacts.nfv.SwImage.yaml
+- openonfv__tosca.capabilities.nfv.VirtualCompute.yaml
+- openonfv__tosca.capabilities.Container.yaml
+- openonfv__tosca.capabilities.nfv.VirtualStorage.yaml
+- openonfv__tosca.requirements.nfv.VirtualBinding.yaml
+- openovnf__tosca.nodes.nfv.VNF.vOpenNAT.yaml
+- openonfv__tosca.capabilities.Endpoint.Admin.yaml
+- openonfv__tosca.capabilities.OperatingSystem.yaml
+- openonfv__tosca.nodes.nfv.VduCpd.yaml
+- openonfv__tosca.relationships.nfv.VDU.AttachedTo.yaml
+metadata: 
+  vnfProductName: openNAT
+  vnfdVersion: 1.0.0
+  vnfProvider: intel
+  vnfmInfo: GVNFM
+  csarVersion: 1.0.0
+  vnfdId: openNAT-1.0
+  csarProvider: intel
+  vnfProductInfoDescription: openNAT
+  version: 1.0.0
+  csarType: NFAR
+  vendor: intel
+  localizationLanguage: '[english, chinese]'
+  id: openNAT-1.0
+  defaultLocalizationLanguage: english
+  vnfProductInfoName: openNAT
+  vnfSoftwareVersion: 1.0.0
+topology_template: 
+  node_templates: 
+    vdu_vNat: 
+      artifacts: 
+        vNatVNFImage: 
+          file: /swimages/xenial-snat.qcow2
+          type: tosca.artifacts.nfv.SwImage
+          properties:
+            name: vNatVNFImage
+            version: "1.0"
+            checksum: "5000"
+            container_format: bare
+            disk_format: qcow2
+            min_disk: 10 GB
+            min_ram: 1 GB
+            size: 10 GB
+            sw_image: /swimages/xenial-snat.qcow2
+            operating_system: unbantu
+      attributes: 
+        tosca_name: vdu_vNat
+      capabilities: 
+        virtual_compute: 
+          properties: 
+            virtual_memory: 
+              numa_enabled: true
+              virtual_mem_size: 2 GB
+            requested_additional_capabilities:
+              numa:
+                support_mandatory: true
+                requested_additional_capability_name: numa
+                target_performance_parameters:
+                  hw:numa_nodes:  "2"
+                  hw:numa_cpus.0:  "0,1"
+                  hw:numa_mem.0:  "1024"
+                  hw:numa_cpus.1:  "2,3,4,5"
+                  hw:numa_mem.1:  "1024"
+              hyper_threading:
+                support_mandatory: true
+                requested_additional_capability_name: hyper_threading
+                target_performance_parameters:
+                  hw:cpu_sockets       :  "2"
+                  hw:cpu_threads       :  "2"
+                  hw:cpu_cores         :  "2"
+                  hw:cpu_threads_policy:  "isolate"
+
+              ovs_dpdk:
+                support_mandatory: true
+                requested_additional_capability_name: ovs_dpdk
+                target_performance_parameters:
+                  sw:ovs_dpdk: "true"
+            virtual_cpu: 
+              cpu_architecture: X86
+              num_virtual_cpu: 2
+      properties: 
+        configurable_properties: 
+          test: 
+            additional_vnfc_configurable_properties: 
+              aaa: 1
+        name: vNat
+        descrption: the virtual machine of vNat
+        boot_order: 
+        - vNAT_Storage
+      requirements: 
+      - virtual_storage: 
+          capability: virtual_storage
+          node: vNAT_Storage
+          relationship: 
+            properties: 
+              location: /mnt/volume_0
+            type: tosca.relationships.nfv.VDU.AttachedTo
+      - local_storage: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VDU.Compute
+    SRIOV_Port: 
+      attributes: 
+        tosca_name: SRIOV_Port
+      properties: 
+        virtual_network_interface_requirements: 
+        - name: sriov
+          support_mandatory: false
+          description: sriov
+          requirement: 
+            SRIOV: true
+        role: root
+        description: sriov port
+        layer_protocol: ipv4
+      requirements: 
+      - virtual_binding: 
+          capability: virtual_binding
+          node: vdu_vNat
+          relationship: 
+            type: tosca.relationships.nfv.VirtualBindsTo
+      - virtual_link: 
+          node: tosca.nodes.Root
+      type: tosca.nodes.nfv.VduCpd
+    vNAT_Storage: 
+      attributes: 
+        tosca_name: vNAT_Storage
+      properties: 
+        id: vNAT_Storage
+        size_of_storage: 10 GB
+        rdma_enabled: false
+        type_of_storage: volume
+      type: tosca.nodes.nfv.VDU.VirtualStorage
+  substitution_mappings: 
+    requirements: 
+      sriov_plane: 
+      - SRIOV_Port
+      - virtual_link
+    node_type: tosca.nodes.nfv.VNF.vOpenNAT
+tosca_definitions_version: tosca_simple_yaml_1_0

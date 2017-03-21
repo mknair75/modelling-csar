@@ -1,0 +1,17 @@
+capability_types: 
+  tosca.capabilities.OperatingSystem: 
+    derived_from: tosca.capabilities.Root
+    properties: 
+      type: 
+        required: false
+        type: string
+      distribution: 
+        required: false
+        type: string
+      version: 
+        required: false
+        type: string
+      architecture: 
+        required: false
+        type: string
+tosca_definitions_version: tosca_simple_yaml_1_0

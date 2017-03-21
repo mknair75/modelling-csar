@@ -1,0 +1,33 @@
+artifact_types: 
+  tosca.artifacts.nfv.SwImage: 
+    derived_from: tosca.artifacts.Root
+    file_ext: []
+    properties: 
+      sw_image: 
+        type: string
+      size: 
+        type: string
+      min_disk: 
+        type: string
+      name: 
+        type: string
+      checksum: 
+        type: string
+      disk_format: 
+        type: string
+      operating_system: 
+        required: false
+        type: string
+      version: 
+        type: string
+      container_format: 
+        type: string
+      supported _virtualization_enviroment: 
+        entry_schema: 
+          type: string
+        required: false
+        type: list
+      min_ram: 
+        required: false
+        type: string
+tosca_definitions_version: tosca_simple_yaml_1_0
