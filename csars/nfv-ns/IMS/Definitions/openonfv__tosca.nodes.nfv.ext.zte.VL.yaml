@@ -1,0 +1,91 @@
+data_types: 
+  tosca.datatypes.nfv.ext.LocationInfo: 
+    properties: 
+      availability_zone: 
+        required: false
+        type: string
+      vimid: 
+        required: false
+        type: integer
+      tenant: 
+        required: false
+        type: string
+  tosca.datatypes.nfv.ext.HostRouteInfo: 
+    properties: 
+      destination: 
+        required: false
+        type: string
+      nexthop: 
+        required: false
+        type: string
+imports: 
+- openonfv__tosca.capabilities.nfv.VirtualLinkable.yaml
+node_types: 
+  tosca.nodes.nfv.ext.zte.VL: 
+    capabilities: 
+      virtual_linkable: 
+        type: tosca.capabilities.nfv.VirtualLinkable
+    derived_from: tosca.nodes.Root
+    properties: 
+      segmentation_id: 
+        required: false
+        type: string
+      network_name: 
+        required: false
+        type: string
+      is_predefined: 
+        required: false
+        type: boolean
+      mtu: 
+        required: false
+        type: integer
+      dns_nameservers: 
+        entry_schema: 
+          type: string
+        required: false
+        type: list
+      physical_network: 
+        required: false
+        type: string
+      dhcp_enabled: 
+        required: false
+        type: boolean
+      network_id: 
+        required: false
+        type: string
+      host_routes: 
+        entry_schema: 
+          type: tosca.datatypes.nfv.ext.HostRouteInfo
+        required: false
+        type: list
+      ip_version: 
+        required: false
+        type: integer
+      vendor: 
+        required: false
+        type: string
+      name: 
+        required: false
+        type: string
+      start_ip: 
+        required: false
+        type: string
+      vlan_transparent: 
+        required: false
+        type: boolean
+      cidr: 
+        required: false
+        type: string
+      gateway_ip: 
+        required: false
+        type: string
+      network_type: 
+        required: false
+        type: string
+      end_ip: 
+        required: false
+        type: string
+      location_info: 
+        required: false
+        type: tosca.datatypes.nfv.ext.LocationInfo
+tosca_definitions_version: tosca_simple_yaml_1_0
